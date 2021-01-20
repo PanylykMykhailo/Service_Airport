@@ -1,0 +1,101 @@
+﻿@model Airport.ViewModels.AddViewModel
+
+@if (Model.schedule_Out != null && Model.schedule_In == null)
+{
+
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label class="control-label">Модель літаку</label>
+            <input type="text" class="form-control" placeholder="@Model.schedule_Out.Name_Board" disabled />
+
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="control-label">Місто відправлення</label>
+            <input type="text" class="form-control" placeholder="@Model.schedule_Out.CityStart.CityName" disabled />
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="control-label">Місто прибуття</label>
+            <input type="text" class="form-control" placeholder="@Model.schedule_Out.CityFinish.CityName" disabled />
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="control-label">Час відправлення</label>
+            <input type="text" class="form-control" placeholder="@Model.schedule_Out.TimeOutAirport" disabled />
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="control-label">Максимальне чило пасажирів</label>
+            <input type="text" class="form-control" placeholder="@Model.schedule_Out.Max_Passenger" disabled />
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="control-label">Вільні місця</label>
+            <input type="text" class="form-control" placeholder="@Model.schedule_Out.FreePlace" disabled />
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="control-label">Статус поїздки</label>
+            <input type="text" class="form-control" placeholder="@Model.schedule_Out.States" disabled />
+        </div>
+
+    </div>
+    <form method="post" asp-action="Renewal">
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input " type="checkbox" value="1" id="value" required>
+                <label class="form-check-label" for="invalidCheck3">
+                    Все добре
+                </label>
+                <div class="invalid-feedback">
+                    Потрібно підтвердити перед відправкою
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Все вірно</button>
+        </form>
+        }
+else if (Model.schedule_Out == null && Model.schedule_In != null)
+        {
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label class="control-label">Модель літаку</label>
+                <input type="text" class="form-control" placeholder="@Model.schedule_In.Name_Board" disabled />
+
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="control-label">Місто відправлення</label>
+                <input type="text" class="form-control" placeholder="@Model.schedule_In.CityStart.CityName" disabled />
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="control-label">Місто прибуття</label>
+                <input type="text" class="form-control" placeholder="@Model.schedule_In.CityFinish.CityName" disabled />
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="control-label">Час відправлення</label>
+                <input type="text" class="form-control" placeholder="@Model.schedule_In.TimeinAirport" disabled />
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="control-label">Максимальне чило пасажирів</label>
+                <input type="text" class="form-control" placeholder="@Model.schedule_In.Max_Passenger" disabled />
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="control-label">Вільні місця</label>
+                <input type="text" class="form-control" placeholder="@Model.schedule_In.FreePlace" disabled />
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="control-label">Статус поїздки</label>
+                <input type="text" class="form-control" placeholder="@Model.schedule_In.States" disabled />
+            </div>
+
+        </div>
+        <form method="post" asp-action="Renewal">
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input " type="checkbox" value="2" id="value" required>
+                    <label class="form-check-label" for="invalidCheck3">
+                        Все добре
+                    </label>
+                    <div class="invalid-feedback">
+                        Потрібно підтвердити перед відправкою
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Все вірно</button>
+        </form>
+        }

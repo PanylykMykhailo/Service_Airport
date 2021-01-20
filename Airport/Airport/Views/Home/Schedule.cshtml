@@ -1,0 +1,163 @@
+﻿@model Airport.ViewModels.ScheduleViewModel
+
+@if (ViewContext.HttpContext.User.IsInRole("admin"))
+{
+    <h1>Розклад польотів</h1>
+
+    <div class="text-left">
+        <a class="btn btn-primary btn-lg active" role="button" asp-controller="Home" asp-action="Schedule">Відправлення</a>
+        <a class="btn btn-secondary btn-lg" role="button" asp-controller="Home" asp-action="Schedule_In">Прибуття</a>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+
+                <tr>
+                    <th scope="col">Номер рейсу</th>
+                    <th scope="col">Модель літака</th>
+                    <th scope="col">Звідки</th>
+                    <th scope="col">Куди</th>
+                    <th scope="col">Дата та час відправлення</th>
+                    <th scope="col">Вартість</th>
+                    <th scope="col">Кількість місць</th>
+                    <th scope="col">Вільні місця</th>
+                    <th scope="col">Стан</th>
+                    <th scope="col">Дія</th>
+                </tr>
+            </thead>
+            @if (Model.schedule_Out == null)
+            {
+                <tbody>
+
+                    @foreach (var item in Model.schedule_In)
+                    {
+
+                        <tr>
+                            <th scope="row">@item.ScheduleID</th>
+                            <td>@item.Name_Board</td>
+                            <td>@item.CityStart.CityName</td>
+                            <td>@item.CityFinish.CityName</td>
+                            <td>@item.TimeinAirport</td>
+                            <td>@item.Price</td>
+                            <td>@item.Max_Passenger</td>
+                            <td>@item.FreePlace</td>
+                            <td>@item.States</td>
+                            <td>
+                                <form asp-controller="Home" asp-action="Delete_In" method="post">
+                                    <input name="myField" id="myField" value="@item.ScheduleID" type="hidden" />
+                                    <input type="submit" value="Видалити" />
+                                </form>
+                            </td>
+                        </tr>
+
+                    }
+
+                </tbody>
+            }
+            @if (Model.schedule_In == null)
+            {
+                <tbody>
+
+                    @foreach (var item in Model.schedule_Out)
+                    {
+                        <tr>
+                            <th scope="row">@item.ScheduleOutID</th>
+                            <td>@item.Name_Board</td>
+                            <td>@item.CityStart.CityName</td>
+                            <td>@item.CityFinish.CityName</td>
+                            <td>@item.TimeOutAirport</td>
+                            <td>@item.Price</td>
+                            <td>@item.Max_Passenger</td>
+                            <td>@item.FreePlace</td>
+                            <td>@item.States</td>
+                            <td>
+                                <form asp-controller="Home" asp-action="ConfirmDelete" method="post">
+                                    <input name="myField" id="myField" value="@item.ScheduleOutID" type="hidden" />
+                                    <input type="submit" value="Видалити" />
+                                </form>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            }
+        </table>
+
+    </div>
+
+
+}
+else
+{
+    <h1>Розклад польотів</h1>
+
+    <div class="text-left">
+        <a class="btn btn-primary btn-lg active" role="button" asp-controller="Home" asp-action="Schedule">Відправлення</a>
+        <a class="btn btn-secondary btn-lg" role="button" asp-controller="Home" asp-action="Schedule_In">Прибуття</a>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+
+                <tr>
+                    <th scope="col">Номер рейсу</th>
+                    <th scope="col">Модель літака</th>
+                    <th scope="col">Звідки</th>
+                    <th scope="col">Куди</th>
+                    <th scope="col">Дата та час відправлення</th>
+                    <th scope="col">Вартість</th>
+                    <th scope="col">Кількість місць</th>
+                    <th scope="col">Вільні місця</th>
+                    <th scope="col">Стан</th>
+                    
+                </tr>
+            </thead>
+            @if (Model.schedule_Out == null)
+            {
+                <tbody>
+
+                    @foreach (var item in Model.schedule_In)
+                    {
+
+                        <tr>
+                            <th scope="row">@item.ScheduleID</th>
+                            <td>@item.Name_Board</td>
+                            <td>@item.CityStart.CityName</td>
+                            <td>@item.CityFinish.CityName</td>
+                            <td>@item.TimeinAirport</td>
+                            <td>@item.Price</td>
+                            <td>@item.Max_Passenger</td>
+                            <td>@item.FreePlace</td>
+                            <td>@item.States</td>
+                         </tr>
+
+                    }
+
+                </tbody>
+            }
+            @if (Model.schedule_In == null)
+            {
+                <tbody>
+
+                    @foreach (var item in Model.schedule_Out)
+                    {
+                        <tr>
+                            <th scope="row">@item.ScheduleOutID</th>
+                            <td>@item.Name_Board</td>
+                            <td>@item.CityStart.CityName</td>
+                            <td>@item.CityFinish.CityName</td>
+                            <td>@item.TimeOutAirport</td>
+                            <td>@item.Price</td>
+                            <td>@item.Max_Passenger</td>
+                            <td>@item.FreePlace</td>
+                            <td>@item.States</td>
+                            
+                        </tr>
+                    }
+
+                </tbody>
+            }
+        </table>
+
+    </div>
+
+
+}
+
+

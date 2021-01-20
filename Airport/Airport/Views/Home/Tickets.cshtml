@@ -1,0 +1,107 @@
+﻿@model Airport.ViewModels.TicketViewModel
+<h2 class="text-center">Пошук напрямку</h2>
+<form asp-action="CheckTrip" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+
+            <label>Оберіть місто</label>
+            <select class="custom-select form-control " asp-for="@Model.searchTrip.CityStart" asp-items="@(new SelectList(Model.City, "CityID", "CityName"))">
+            </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label>Пункт призначення</label>
+
+
+            <select class="custom-select form-control " asp-for="@Model.searchTrip.CityFinish" asp-items="@(new SelectList(Model.City, "CityID", "CityName"))">
+            </select>
+
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label asp-for="@Model.searchTrip.Data">Дата відправлення</label>
+            <input asp-for="@Model.searchTrip.Data" class="form-control" />
+
+        </div>
+        <div class="col-md-6 mb-3">
+            <label>Кількість осіб</label>
+            <select class="custom-select form-control " asp-for="@Model.searchTrip.Quantity" asp-items="@new SelectList(Model.Quantity)">
+            </select>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <div class="form-check">
+            <input class="form-check-input " type="checkbox" value="" id="invalidCheck3" required>
+            <label class="form-check-label" for="invalidCheck3">
+                Підтвердити
+            </label>
+            <div class="invalid-feedback">
+                Потрібно підтвердити перед пошуком
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Пошук</button>
+</form>
+
+@if (Model.schedule != null)
+{
+    
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Номер рейсу</th>
+                    <th scope="col">Модель літака</th>
+                    <th scope="col">Звідки</th>
+                    <th scope="col">Куди</th>
+                    <th scope="col">Дата та час відправлення</th>
+                    <th scope="col">Вартість</th>
+                    <th scope="col">Кількість місць</th>
+                    <th scope="col">Вільні місця</th>
+                    <th scope="col">Стан</th>
+                    <th scope="col">Обрати</th>
+                </tr>
+
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model.schedule)
+                {
+                <tr>
+
+                    <th scope="row">@item.ScheduleOutID</th>
+                   
+                        <td>@item.Name_Board</td>
+                        <td>@item.CityStart.CityName</td>
+                        <td>@item.CityFinish.CityName</td>
+                        <td>@item.TimeOutAirport</td>
+                        <td>@item.Price</td>
+                        <td>@item.Max_Passenger</td>
+                        <td>@item.FreePlace</td>
+                        <td>@item.States</td>
+                        <td>
+                            <form asp-controller="Home" asp-action="Booking" method="post">
+                                <input name="scheeduleId" id="scheeduleId" value="@item.ScheduleOutID" type="hidden" />
+                                <input name="citystart" id="citystart" value="@item.CityStart.CityName" type="hidden" />
+                                <input type="submit" value="Бронювати" />
+                            </form>
+                        </td>
+                    
+                </tr>
+               
+                }
+
+            </tbody>
+        </table>
+        
+    
+}
+
+
+
+
+
+
+
+

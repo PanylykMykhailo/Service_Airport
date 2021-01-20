@@ -1,0 +1,147 @@
+﻿@model Airport.ViewModels.AddViewModel
+
+<h2 class="text-center">Добавити Відправлення</h2>
+<form asp-action="Create_Table_Out"  method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+
+            <label asp-for="@Model.schedule_Out.Name_Board" class="control-label">Введіть назву рейсу</label>
+
+            <input type="text" asp-for="@Model.schedule_Out.Name_Board" class="form-control" />
+        </div>
+        <div class="col-md-6 mb-3">
+
+            <label asp-for="@Model.schedule_Out.CityStart.CityName" class="control-label">Введіть місто</label>
+
+            <input type="text" asp-for="@Model.schedule_Out.CityStart.CityName" class="form-control" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+
+            <label asp-for="@Model.schedule_Out.CityFinish.CityName" class="control-label">Введіть місто призначення</label>
+
+            <input type="text" asp-for="@Model.schedule_Out.CityFinish.CityName" class="form-control" />
+
+        </div>
+
+
+        <div class="col-md-6 mb-3">
+            <label asp-for="@Model.schedule_Out.TimeOutAirport">Час відправлення</label>
+            <input asp-for="@Model.schedule_Out.TimeOutAirport" class="form-control" />
+
+        </div>
+
+        <div class="col-md-6 mb-3">
+
+            <label asp-for="@Model.schedule_Out.Price" class="control-label">Вартість</label>
+
+            <input type="text" asp-for="@Model.schedule_Out.Price" class="form-control" />
+        </div>
+        <div class="col-md-6 mb-3">
+
+            <label asp-for="@Model.schedule_Out.Max_Passenger" class="control-label">Вмістимість</label>
+            <input type="text" asp-for="@Model.schedule_Out.Max_Passenger" class="form-control" />
+        </div>
+
+
+       
+            <div class="col-md-6 mb-3">
+                <label asp-for="@Model.schedule_Out.FreePlace">Вільні місця</label>
+                <input asp-for="@Model.schedule_Out.FreePlace" class="form-control" />
+
+            </div>
+
+            <div class="col-md-6 mb-3">
+
+                <label asp-for="@Model.schedule_Out.States" class="control-label">Статус</label>
+
+                <input type="text" asp-for="@Model.schedule_Out.States" class="form-control" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input " type="checkbox" value="" id="invalidCheck3" required>
+                <label class="form-check-label" for="invalidCheck3">
+                    Підтвердити
+                </label>
+                <div class="invalid-feedback">
+                    Потрібно підтвердити перед пошуком
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Добавити</button>
+</form>
+
+<h2 class="text-center">Добавити прибуття</h2>
+<form asp-action="Create_Table_In" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+
+            <label asp-for="@Model.schedule_In.Name_Board" class="control-label">Введіть назву рейсу</label>
+
+            <input type="text" asp-for="@Model.schedule_In.Name_Board" class="form-control" />
+        </div>
+        <div class="col-md-6 mb-3">
+
+            <label asp-for="@Model.schedule_In.CityStart.CityName" class="control-label">Введіть місто</label>
+
+            <input type="text" asp-for="@Model.schedule_In.CityStart.CityName" class="form-control" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+
+            <label asp-for="@Model.schedule_In.CityFinish.CityName" class="control-label">Введіть місто призначення</label>
+
+            <input type="text" asp-for="@Model.schedule_In.CityFinish.CityName" class="form-control" />
+
+        </div>
+
+
+        <div class="col-md-6 mb-3">
+            <label asp-for="@Model.schedule_In.TimeinAirport">Час відправлення</label>
+            <input asp-for="@Model.schedule_In.TimeinAirport" class="form-control" />
+
+        </div>
+
+        <div class="col-md-6 mb-3">
+
+            <label asp-for="@Model.schedule_In.Price" class="control-label">Вартість</label>
+
+            <input type="text" asp-for="@Model.schedule_In.Price" class="form-control" />
+        </div>
+        <div class="col-md-6 mb-3">
+
+            <label asp-for="@Model.schedule_In.Max_Passenger" class="control-label">Вмістимість</label>
+            <input type="text" asp-for="@Model.schedule_In.Max_Passenger" class="form-control" />
+        </div>
+
+
+
+        <div class="col-md-6 mb-3">
+            <label asp-for="@Model.schedule_In.FreePlace">Вільні місця</label>
+            <input asp-for="@Model.schedule_In.FreePlace" class="form-control" />
+
+        </div>
+
+        <div class="col-md-6 mb-3">
+
+            <label asp-for="@Model.schedule_In.States" class="control-label">Статус</label>
+
+            <input type="text" asp-for="@Model.schedule_In.States" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-check">
+            <input class="form-check-input " type="checkbox" value="" id="invalidCheck3" required>
+            <label class="form-check-label" for="invalidCheck3">
+                Підтвердити
+            </label>
+            <div class="invalid-feedback">
+                Потрібно підтвердити перед пошуком
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Добавити</button>
+</form>
